@@ -1,6 +1,7 @@
 package com.nawrot.mateusz.recipey.di
 
 import com.nawrot.mateusz.recipey.home.HomeActivity
+import com.nawrot.mateusz.recipey.splash.SplashScreenActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -9,6 +10,10 @@ import dagger.android.ContributesAndroidInjector
 abstract class BuildersModule {
 
     @ActivityScope
-    @ContributesAndroidInjector
-    abstract fun bindMainActivity(): HomeActivity
+    @ContributesAndroidInjector(modules = arrayOf(HomeActivityModule::class))
+    abstract fun bindHomeActivity(): HomeActivity
+
+    @ActivityScope
+    @ContributesAndroidInjector(modules = arrayOf(SplashScreenActivityModule::class))
+    abstract fun bindSplashScreenActivity() : SplashScreenActivity
 }
