@@ -15,5 +15,5 @@ abstract class BaseViewModelFactory<out P : Any>(private val viewModelClass: KCl
         return createViewModel() as T
     }
 
-    abstract fun createViewModel(): P
+    abstract protected fun createViewModel(): P
 }
