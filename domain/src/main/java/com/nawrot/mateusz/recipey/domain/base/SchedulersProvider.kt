@@ -1,9 +1,16 @@
 package com.nawrot.mateusz.recipey.domain.base
 
+import io.reactivex.CompletableTransformer
 import io.reactivex.ObservableTransformer
+import io.reactivex.SingleTransformer
 
 
 interface SchedulersProvider {
 
-    fun <T> apply() : ObservableTransformer<T, T>
+    fun completableTransformer(): CompletableTransformer
+
+    fun <T> observableTransformer(): ObservableTransformer<T, T>
+
+    fun <T> singleTransformer(): SingleTransformer<T, T>
+
 }
