@@ -1,7 +1,9 @@
 package com.nawrot.mateusz.recipey.di
 
 import com.nawrot.mateusz.recipey.home.HomeActivity
+import com.nawrot.mateusz.recipey.home.HomeActivityModule
 import com.nawrot.mateusz.recipey.splash.SplashScreenActivity
+import com.nawrot.mateusz.recipey.splash.SplashScreenActivityModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

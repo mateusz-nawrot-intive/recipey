@@ -1,7 +1,7 @@
-package com.nawrot.mateusz.recipey.di
+package com.nawrot.mateusz.recipey.home
 
 import android.content.Context
-import com.nawrot.mateusz.recipey.home.HomeActivity
+import com.nawrot.mateusz.recipey.di.BaseActivityModule
 import dagger.Module
 import dagger.Provides
 

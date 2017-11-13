@@ -1,7 +1,7 @@
-package com.nawrot.mateusz.recipey.di
+package com.nawrot.mateusz.recipey.splash
 
 import android.content.Context
-import com.nawrot.mateusz.recipey.splash.SplashScreenActivity
+import com.nawrot.mateusz.recipey.di.BaseActivityModule
 import dagger.Module
 import dagger.Provides
 
