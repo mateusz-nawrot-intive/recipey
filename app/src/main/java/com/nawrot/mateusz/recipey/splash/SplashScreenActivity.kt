@@ -1,5 +1,6 @@
 package com.nawrot.mateusz.recipey.splash
 
+import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.util.Log
@@ -16,7 +17,7 @@ import javax.inject.Inject
 class SplashScreenActivity : BaseActivity() {
 
     @Inject
-    lateinit var splashScreenViewModelFactory: SplashScreenViewModelFactory
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private lateinit var splashScreenViewModel: SplashScreenViewModel
 
@@ -24,12 +25,12 @@ class SplashScreenActivity : BaseActivity() {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
-        splashScreenViewModel = ViewModelProviders.of(this, splashScreenViewModelFactory).get(SplashScreenViewModel::class.java)
+        splashScreenViewModel = ViewModelProviders.of(this, viewModelFactory).get(SplashScreenViewModel::class.java)
 
         splashScreenProgress.setColor(getColorCompat(R.color.white))
         animateSplash()
         splashScreenViewModel.initializeApplication().subscribe(
-                { splashScreenViewModel.openHomeScreen() },
+                { splashScreenViewModel.openHomeScreen(this) },
                 { error -> Log.d("ERROR", Log.getStackTraceString(error)) }
         )
     }

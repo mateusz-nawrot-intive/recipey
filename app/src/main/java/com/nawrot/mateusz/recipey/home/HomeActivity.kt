@@ -1,5 +1,6 @@
 package com.nawrot.mateusz.recipey.home
 
+import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.design.widget.NavigationView
@@ -18,7 +19,7 @@ import javax.inject.Inject
 class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     @Inject
-    lateinit var homeViewModelFactory: HomeViewModelFactory
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private lateinit var homeViewModel: HomeViewModel
 
@@ -26,7 +27,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        homeViewModel = ViewModelProviders.of(this, homeViewModelFactory).get(HomeViewModel::class.java)
+        homeViewModel = ViewModelProviders.of(this, viewModelFactory).get(HomeViewModel::class.java)
 
 
         initToolbar(toolbar)
@@ -34,7 +35,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
-            homeViewModel.doSomething(this)
+            homeViewModel.doSomething(this).subscribe({})
         }
 
         val toggle = ActionBarDrawerToggle(

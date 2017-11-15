@@ -4,7 +4,9 @@ import com.nawrot.mateusz.recipey.App
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
+import javax.inject.Singleton
 
+@Singleton
 @Component(modules = arrayOf(
         AndroidInjectionModule::class,
         AppModule::class,

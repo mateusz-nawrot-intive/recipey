@@ -3,11 +3,13 @@ package com.nawrot.mateusz.recipey.navigation
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import com.nawrot.mateusz.recipey.di.ActivityScope
+import android.util.Log
 import javax.inject.Inject
 
-@ActivityScope
 class AppNavigator @Inject constructor() : Navigator {
+    init {
+        Log.d("APP_NAVIGATOR", "CREATING APP NAVIGATOR")
+    }
 
     override fun navigateTo(context: Context, navigationTarget: NavigationTarget) {
         val activityIntent = Intent(context, navigationTarget.targetClass.java)

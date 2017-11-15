@@ -2,17 +2,17 @@ package com.nawrot.mateusz.recipey.navigation
 
 import android.content.Context
 import android.util.Log
-import com.nawrot.mateusz.recipey.di.ActivityScope
 import javax.inject.Inject
+import javax.inject.Singleton
 
-@ActivityScope
-class NavigationRouter @Inject constructor(private val context: Context, private val navigator: Navigator) {
+@Singleton
+class NavigationRouter @Inject constructor(private val navigator: Navigator) {
 
     init {
-        Log.d("NAVIGATION_ROUTER", "Context class = " + context.javaClass.simpleName)
+        Log.d("NAVIGATION_ROUTER", "Creating navigation router")
     }
 
-    fun navigateTo(navigationTarget: NavigationTarget) {
+    fun navigateTo(context: Context, navigationTarget: NavigationTarget) {
         navigator.navigateTo(context, navigationTarget)
     }
 }
