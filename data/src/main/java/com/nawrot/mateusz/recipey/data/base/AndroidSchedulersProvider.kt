@@ -13,44 +13,24 @@ import javax.inject.Singleton
 class AndroidSchedulersProvider @Inject constructor() : SchedulersProvider {
 
     override fun completableTransformer(): CompletableTransformer {
-        return getCompletableTransformer()
+        Log.d("AndroidSchedulersProv", "CREATING COMPLETABLE TRANSFORMER");
+        return CompletableTransformer { it ->
+            it.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+        }
     }
 
     override fun <T> singleTransformer(): SingleTransformer<T, T> {
-        return getSingleTransformer()
+        Log.d("AndroidSchedulersProv", "CREATING SINGLE TRANSFORMER");
+        return SingleTransformer { it ->
+            it.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+        }
     }
 
     override fun <T> observableTransformer(): ObservableTransformer<T, T> {
-        return getObservableTransformer()
-    }
-
-    private fun getCompletableTransformer(): CompletableTransformer {
-        Log.d("AndroidSchedulersProv", "CREATING COMPLETABLE TRANSFORMER");
-        return CompletableTransformer {
-            it.apply {
-                subscribeOn(Schedulers.io())
-                observeOn(AndroidSchedulers.mainThread())
-            }
-        }
-    }
-
-    private fun <T> getSingleTransformer(): SingleTransformer<T, T> {
-        Log.d("AndroidSchedulersProv", "CREATING SINGLE TRANSFORMER");
-        return SingleTransformer {
-            it.apply {
-                subscribeOn(io.reactivex.schedulers.Schedulers.io())
-                observeOn(AndroidSchedulers.mainThread())
-            }
-        }
-    }
-
-    private fun <T> getObservableTransformer(): ObservableTransformer<T, T> {
         Log.d("AndroidSchedulersProv", "CREATING OBSERVABLE TRANSFORMER");
-        return ObservableTransformer {
-            it.apply {
-                subscribeOn(Schedulers.io())
-                observeOn(AndroidSchedulers.mainThread())
-            }
+        return ObservableTransformer { it ->
+            it.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
         }
     }
+
 }
