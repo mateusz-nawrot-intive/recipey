@@ -2,7 +2,6 @@ package com.nawrot.mateusz.recipey
 
 import android.app.Activity
 import android.app.Application
-import com.backendless.Backendless
 import com.nawrot.mateusz.recipey.di.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -23,15 +22,10 @@ class App : Application(), HasActivityInjector {
                 .application(this)
                 .build()
                 .inject(this)
-
-        initBackendless()
     }
 
     override fun activityInjector(): AndroidInjector<Activity> {
         return dispatchingAndroidInjector
     }
 
-    private fun initBackendless() {
-        Backendless.initApp(this, getString(R.string.application_id), getString(R.string.api_key))
-    }
 }
