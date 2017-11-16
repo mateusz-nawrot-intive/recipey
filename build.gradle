@@ -34,7 +34,14 @@ ext {
     targetSdkVersion = 27
     compileSdkVersion = 27
 
+    junitVersion = '4.12'
+    testRunnerVersion = '1.0.1'
+    espressoVersion = '3.0.1'
+
     supportLibraryVersion = '27.0.0'
+    constraintLayoutVersion = '1.0.2'
+    lifecycleVersion = '1.0.0'
+
     daggerVersion = '2.11'
 
     rxJavaVersion = '2.1.5'
@@ -42,5 +49,5 @@ ext {
     rxAndroidVersion = '2.0.1'
     rxBindingVersion = '2.0.0'
 
-    lifecycleVersion = '1.0.0'
+    backendlessVersion = '4.0.4'
 }
