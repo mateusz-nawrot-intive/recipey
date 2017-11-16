@@ -7,6 +7,7 @@ import android.support.design.widget.NavigationView
 import android.support.design.widget.Snackbar
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.nawrot.mateusz.recipey.R
@@ -35,7 +36,10 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
-            homeViewModel.doSomething(this).subscribe({})
+            homeViewModel.getRecipes(this)
+                    .subscribe(
+                            { recipes -> recipes.forEach { Log.d("RECIPE", "$it") } },
+                            { error -> Log.d("Recipes error", Log.getStackTraceString(error)) })
         }
 
         val toggle = ActionBarDrawerToggle(

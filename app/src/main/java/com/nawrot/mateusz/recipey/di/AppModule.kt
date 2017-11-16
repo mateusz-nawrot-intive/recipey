@@ -4,7 +4,7 @@ import android.content.Context
 import com.nawrot.mateusz.recipey.App
 import com.nawrot.mateusz.recipey.R
 import com.nawrot.mateusz.recipey.data.base.AndroidSchedulersProvider
-import com.nawrot.mateusz.recipey.data.recipe.repository.FbRecipeRepository
+import com.nawrot.mateusz.recipey.data.recipe.repository.RYRecipeRepository
 import com.nawrot.mateusz.recipey.domain.base.SchedulersProvider
 import com.nawrot.mateusz.recipey.domain.recipe.repository.RecipeRepository
 import com.nawrot.mateusz.recipey.navigation.AppNavigator
@@ -34,7 +34,7 @@ abstract class AppModule {
     abstract fun navigator(appNavigator: AppNavigator): Navigator
 
     @Binds
-    abstract fun recipeRepository(recipeRepository: FbRecipeRepository): RecipeRepository
+    abstract fun recipeRepository(recipeRepository: RYRecipeRepository): RecipeRepository
 
     @Module
     companion object {
